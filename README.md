@@ -294,10 +294,7 @@ Accede al dashboard interactivo en: **http://localhost:1880/ui**
 ##  **Documentación Completa**
 
 -  **[INSTALLATION_GUIDE.md](INSTALLATION_GUIDE.md)** - Guía paso a paso detallada
--  **[Hardware Setup](docs/hardware.md)** - Diagramas de conexión
--  **[Security Guide](docs/security.md)** - Configuración TLS completa
--  **[Telegram Bot](docs/telegram.md)** - Configuración del bot
--  **[Node-RED Flows](docs/node-red.md)** - Personalización dashboard
+
 
 ---
 
