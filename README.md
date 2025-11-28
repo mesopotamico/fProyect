@@ -201,7 +201,7 @@ curl -X POST http://localhost:8123/api/device_command \
 
 ---
 
-## 🤖 **Comandos Bot de Telegram**
+## ** Bot de Telegram**
 
 | Comando | Descripción |
 |---------|-------------|
@@ -262,10 +262,6 @@ mosquitto -c mosquitto.conf
 ##  **Autor**
 
 **mesopotamico** - *ESP32 IoT System Developer*  
-📧 n.duque1@utp.edu.co
+ n.duque1@utp.edu.co
 
----
-
----
-
-**🎯 Sistema IoT ESP32 - Completo, Seguro y Escalable** 🚀
+-
