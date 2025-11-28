@@ -54,6 +54,10 @@ Sistema IoT avanzado con **dos ESP32** que se comunican de forma cruzada, servid
 └────────────────┘                        └─────────────────┘
 ```
 
+<img width="668" height="453" alt="Bildschirmfoto 2025-11-27 um 23 37 33" src="https://github.com/user-attachments/assets/7a4128fb-e14d-4bb4-922b-ef00f915faf5" />
+
+
+
 ---
 
 ##  **Estructura del Proyecto**
