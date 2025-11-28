@@ -167,24 +167,6 @@ node-red
 
 ---
 
-##  **Interacciones del Sistema**
-
-### **Comunicación Cruzada ESP32-a-ESP32:**
-- **ESP32 #1 Botón 1**  → **LED Toggle en ESP32 #2** 
-- **ESP32 #1 Botón 2**  → **Buzzer en ESP32 #2**   
-- **ESP32 #2 Botón 2**  → **Acknowledge a ESP32 #1** 
-
-### **Control Remoto:**
-- **Node-RED Dashboard**  → Control LEDs y buzzer en tiempo real
-- **Bot de Telegram**  → Comandos remotos (`/temperature`, `/ledon`, `/buzzer`)
-- **API REST**  → Integración con otros sistemas
-
-### **Monitoreo:**
-- **Temperatura**  → Cada 5 segundos → PostgreSQL → Dashboard
-- **RFID**  → Eventos instantáneos → Logs → Notifications  
-- **Botones**  → Eventos en tiempo real → Comandos cruzados
-
----
 
 ##  **Endpoints API REST**
 
@@ -263,35 +245,8 @@ mosquitto -c mosquitto.conf
 
 ---
 
-##  **Dashboard Node-RED**
 
-Accede al dashboard interactivo en: **http://localhost:1880/ui**
-
-### **Funcionalidades del Dashboard:**
--  **Gauges de temperatura y humedad** en tiempo real
--  **Switches para control de LEDs** individuales  
--  **Botón de buzzer** instantáneo
--  **Log de eventos RFID** más recientes
--  **Gráfico histórico** de temperatura
--  **Notificaciones** de eventos de botones
--  **Estado del sistema** actualizado automáticamente
-
----
-
-##  **Escalabilidad y Extensiones**
-
-### **Fácil de Extender:**
--  **Agregar más ESP32s** → Solo configurar nuevos device_ids
--  **Más sensores** → DHT22, BME280, etc.
--  **Más actuadores** → Servos, relés, displays
--  **APIs externas** → Integraciones cloud, webhooks
--  **Apps móviles** → Consumir la API REST
-
-### **Arquitectura Modular:**
--  **Backend Rust** → High performance, memory safe
--  **PostgreSQL** → Escalable, ACID compliance  
--  **MQTT** → IoT standard, lightweight
--  **Node-RED** → Visual programming, extensible
+-
 
 ---
 
