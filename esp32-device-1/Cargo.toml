@@ -1,0 +1,34 @@
+[package]
+name = "esp32-device-1"
+version = "0.1.0"
+authors = ["mesopotamico <n.duque1@utp.edu.co>"]
+edition = "2021"
+resolver = "2"
+rust-version = "1.77"
+
+[[bin]]
+name = "esp32-device-1"
+harness = false
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+strip = false
+panic = "abort"
+
+[profile.dev]
+debug = true
+opt-level = "s"
+
+[features]
+default = []
+experimental = ["esp-idf-svc/experimental"]
+
+[dependencies]
+log = { version = "0.4", default-features = false }
+esp-idf-svc = { version = "0.51", features = ["binstart", "alloc"] }
+nb = "1.0"
+
+[build-dependencies]
+embuild = "0.33"

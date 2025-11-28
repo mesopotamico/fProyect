@@ -1,0 +1,21 @@
+# WiFi Configuration (usar variables de entorno)
+# CONFIG_ESP_WIFI_SSID="UTP"
+# CONFIG_ESP_WIFI_PASSWORD="tecnologica"
+# Las credenciales ahora se cargan desde variables de entorno
+
+# MQTT Configuration  
+CONFIG_MQTT_PROTOCOL_311=y
+CONFIG_LWIP_MAX_SOCKETS=16
+
+# Security Configuration
+CONFIG_SECURE_FLASH_ENC_ENABLED=n
+CONFIG_SECURE_BOOT=n
+# Habilitar en producción
+
+# ADC Configuration
+CONFIG_ADC_CAL_EFUSE_TP_ENABLE=y
+CONFIG_ADC_CAL_EFUSE_VREF_ENABLE=y
+
+# Performance optimizations
+CONFIG_FREERTOS_HZ=1000
+CONFIG_ESP_TASK_WDT_TIMEOUT_S=10
