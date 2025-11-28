@@ -1,4 +1,4 @@
-#  Sistema IoT ESP32 - Completo y Seguro
+#  Sistema IoT ESP32 
 
 ## **Resumen del Proyecto**
 
