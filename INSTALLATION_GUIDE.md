@@ -310,39 +310,7 @@ espflash monitor
 # Activar debug en el editor de flows
 ```
 
----
 
-## Verificación del Sistema
-
-### Checklist de Funcionamiento:
-
-- [ ] Servidor Rust ejecutándose en puerto 8123
-- [ ] PostgreSQL con base de datos creada
-- [ ] ESP32 #1 enviando datos de temperatura
-- [ ] ESP32 #1 detectando tarjetas RFID  
-- [ ] ESP32 #2 recibiendo comandos MQTT
-- [ ] LEDs controlables desde Node-RED
-- [ ] Buzzer funcional
-- [ ] Bot de Telegram respondiendo
-- [ ] Dashboard Node-RED mostrando datos en tiempo real
-- [ ] Comunicación cruzada entre ESP32s funcionando
-
-### URLs de Acceso:
-- **API Rust:** http://localhost:8123
-- **Node-RED Editor:** http://localhost:1880  
-- **Dashboard:** http://localhost:1880/ui
-- **PostgreSQL:** puerto 5432
-- **MQTT:** broker.hivemq.com:1883
-
----
-
-## Recursos Adicionales
-
-- **Documentación ESP-IDF:** https://docs.espressif.com/
-- **Node-RED Documentation:** https://nodered.org/docs/
-- **PostgreSQL Docs:** https://www.postgresql.org/docs/
-- **MQTT.org:** https://mqtt.org/
-- **Telegram Bot API:** https://core.telegram.org/bots/api
 
 ---
 
