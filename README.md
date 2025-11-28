@@ -1,10 +1,10 @@
 #  Sistema IoT ESP32 - Completo y Seguro
 
-## 📋 **Resumen del Proyecto**
+## **Resumen del Proyecto**
 
 Sistema IoT avanzado con **dos ESP32** que se comunican de forma cruzada, servidor **Rust** con **PostgreSQL**, panel **Node-RED**, y bot de **Telegram**. Todo con protocolos de seguridad **TLS** opcionales.
 
-### **🎯 Funcionalidades Principales**
+### ** Funcionalidades Principales**
 
  **Comunicación cruzada ESP32-a-ESP32**  
  **Sensor de temperatura analógico (LM35)**  
@@ -60,7 +60,7 @@ Sistema IoT avanzado con **dos ESP32** que se comunican de forma cruzada, servid
 
 ```
 esp32-iot-system/
-├── 📁esp32-simulator/         # Servidor Rust Principal
+├── esp32-simulator/         # Servidor Rust Principal
 │   ├── src/
 │   │   ├── main.rs            # Servidor Axum + MQTT
 │   │   ├── database.rs        # PostgreSQL integration
