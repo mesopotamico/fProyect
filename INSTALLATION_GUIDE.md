@@ -1,23 +1,23 @@
-# 🚀 ESP32 IoT System - Guía de Instalación Completa
+# ESP32 IoT System - Guía de Instalación Completa
 
-## 📋 **Componentes del Sistema**
+## Componentes del Sistema
 
-### **Software:**
+### Software:
 - **Servidor Rust** (API + PostgreSQL + Telegram Bot)
 - **ESP32 Device #1** (Sensor + RFID + Botones)
 - **ESP32 Device #2** (LEDs + Buzzer + Botones)
 - **Panel Node-RED** (Dashboard web)
 
-### **Hardware Requerido:**
+### Hardware Requerido:
 
-#### **ESP32 Device #1 (Sensor):**
+#### ESP32 Device #1 (Sensor):
 - ESP32 DevKit
 - Sensor de temperatura LM35 (GPIO32)
 - RFID RC522 (SPI: GPIO12/13/14/15, RST: GPIO27)
 - 3 Botones (GPIO18, 19, 21) + resistencias pull-up
 - Protoboard y cables
 
-#### **ESP32 Device #2 (Actuator):**
+#### ESP32 Device #2 (Actuator):
 - ESP32 DevKit
 - 3 LEDs (GPIO25, 26, 27) + resistencias 220Ω
 - Buzzer pasivo (GPIO21)
@@ -26,9 +26,9 @@
 
 ---
 
-## 🗄️ **1. Configuración PostgreSQL**
+## 1. Configuración PostgreSQL
 
-### **Instalar PostgreSQL:**
+### Instalar PostgreSQL:
 ```bash
 # Ubuntu/Debian
 sudo apt update
@@ -41,7 +41,7 @@ brew services start postgresql
 # Windows: Descargar desde https://www.postgresql.org/download/
 ```
 
-### **Crear Base de Datos:**
+### Crear Base de Datos:
 ```bash
 # Conectar como usuario postgres
 sudo -u postgres psql
@@ -58,15 +58,15 @@ psql -U esp32_user -d esp32_iot -f esp32-simulator/database_schema.sql
 
 ---
 
-## 🦀 **2. Configuración Servidor Rust**
+## 2. Configuración Servidor Rust
 
-### **Instalar Rust:**
+### Instalar Rust:
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source ~/.cargo/env
 ```
 
-### **Configurar Servidor:**
+### Configurar Servidor:
 ```bash
 cd esp32-simulator
 
@@ -75,7 +75,7 @@ cp .env.example .env
 nano .env
 ```
 
-### **Archivo .env:**
+### Archivo .env:
 ```env
 # Base de datos PostgreSQL
 DATABASE_URL=postgresql://esp32_user:esp32_password@localhost:5432/esp32_iot
@@ -93,7 +93,7 @@ SERVER_HOST=0.0.0.0
 SERVER_PORT=8123
 ```
 
-### **Ejecutar Servidor:**
+### Ejecutar Servidor:
 ```bash
 cargo run --release
 ```
@@ -108,9 +108,9 @@ cargo run --release
 
 ---
 
-## 🔧 **3. Configuración ESP32s**
+## 3. Configuración ESP32s
 
-### **Instalar ESP-IDF para Rust:**
+### Instalar ESP-IDF para Rust:
 ```bash
 # Instalar espup
 cargo install espup
@@ -120,7 +120,7 @@ espup install
 source ~/export-esp.sh  # Linux/macOS
 ```
 
-### **ESP32 Device #1 (Sensor):**
+### ESP32 Device #1 (Sensor):
 ```bash
 cd esp32-device-1
 
@@ -154,7 +154,7 @@ Botones:
 - Botón 3 → GPIO21 (pull-up interno)
 ```
 
-### **ESP32 Device #2 (Actuator):**
+### ESP32 Device #2 (Actuator):
 ```bash
 cd esp32-device-2
 
@@ -184,9 +184,9 @@ Botones:
 
 ---
 
-## 🎨 **4. Configuración Node-RED**
+## 4. Configuración Node-RED
 
-### **Instalar Node-RED:**
+### Instalar Node-RED:
 ```bash
 # Instalar Node.js (versión LTS)
 # Desde https://nodejs.org/
@@ -198,14 +198,14 @@ npm install -g node-red
 npm install -g node-red-dashboard node-red-contrib-ui-toast
 ```
 
-### **Ejecutar Node-RED:**
+### Ejecutar Node-RED:
 ```bash
 node-red
 ```
 
 **Acceder a:** `http://localhost:1880`
 
-### **Importar Dashboard:**
+### Importar Dashboard:
 1. Ir a **Menú → Import**
 2. Pegar contenido de `node-red-flows/esp32-dashboard.json`
 3. Hacer clic en **Deploy**
@@ -213,20 +213,20 @@ node-red
 
 ---
 
-## 🤖 **5. Configuración Bot de Telegram**
+## 5. Configuración Bot de Telegram
 
-### **Crear Bot:**
+### Crear Bot:
 1. Abrir Telegram y buscar `@BotFather`
 2. Enviar `/newbot`
 3. Seguir instrucciones y obtener token
 4. Agregar token al archivo `.env`
 
-### **Obtener Chat ID:**
+### Obtener Chat ID:
 1. Enviar mensaje a tu bot
 2. Ir a: `https://api.telegram.org/botTU_TOKEN/getUpdates`
 3. Copiar el `chat.id` al archivo `.env`
 
-### **Comandos Disponibles:**
+### Comandos Disponibles:
 - `/help` - Mostrar ayuda
 - `/temperature` - Temperatura actual
 - `/status` - Estado del sistema
@@ -238,28 +238,28 @@ node-red
 
 ---
 
-## 🔗 **6. Funcionamiento del Sistema**
+## 6. Funcionamiento del Sistema
 
-### **Comunicación Cruzada:**
+### Comunicación Cruzada:
 - **ESP32 #1 Botón 1** → Enciende LED en ESP32 #2
 - **ESP32 #1 Botón 2** → Activa buzzer en ESP32 #2  
 - **ESP32 #2 Botón 1** → Toggle LED local
 - **ESP32 #2 Botón 2** → Buzzer + envía ACK a ESP32 #1
 
-### **Datos del Sistema:**
+### Datos del Sistema:
 - **Temperatura** → Leída cada 5 segundos → Guardada en PostgreSQL
 - **RFID** → Evento enviado por MQTT → Guardado en PostgreSQL
 - **Botones** → Eventos enviados por MQTT → Comandos cruzados
 - **APIs** → Acceso a datos históricos vía REST
 
-### **Interfaces:**
+### Interfaces:
 - **Node-RED Dashboard:** Control visual en tiempo real
 - **Telegram Bot:** Control remoto por mensaje
 - **API REST:** Integración con otros sistemas
 
 ---
 
-## 🔒 **7. Configuración de Seguridad (Opcional)**
+## 7. Configuración de Seguridad (Opcional)
 
 Para habilitar TLS/SSL:
 
@@ -278,9 +278,9 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
 
 ---
 
-## 🚨 **Troubleshooting**
+## Troubleshooting
 
-### **Problemas Comunes:**
+### Problemas Comunes:
 
 **1. ESP32 no se conecta a WiFi:**
 - Verificar credenciales en `sdkconfig.defaults`
@@ -298,7 +298,7 @@ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
 - Verificar configuración del broker MQTT
 - Revisar tópicos en los flows
 
-### **Logs Útiles:**
+### Logs Útiles:
 ```bash
 # Servidor Rust
 RUST_LOG=debug cargo run
@@ -312,9 +312,9 @@ espflash monitor
 
 ---
 
-## 🎯 **Verificación del Sistema**
+## Verificación del Sistema
 
-### **Checklist de Funcionamiento:**
+### Checklist de Funcionamiento:
 
 - [ ] Servidor Rust ejecutándose en puerto 8123
 - [ ] PostgreSQL con base de datos creada
@@ -327,7 +327,7 @@ espflash monitor
 - [ ] Dashboard Node-RED mostrando datos en tiempo real
 - [ ] Comunicación cruzada entre ESP32s funcionando
 
-### **URLs de Acceso:**
+### URLs de Acceso:
 - **API Rust:** http://localhost:8123
 - **Node-RED Editor:** http://localhost:1880  
 - **Dashboard:** http://localhost:1880/ui
@@ -336,7 +336,7 @@ espflash monitor
 
 ---
 
-## 📚 **Recursos Adicionales**
+## Recursos Adicionales
 
 - **Documentación ESP-IDF:** https://docs.espressif.com/
 - **Node-RED Documentation:** https://nodered.org/docs/
@@ -346,4 +346,4 @@ espflash monitor
 
 ---
 
-¡Sistema IoT ESP32 completo configurado y funcionando! 🎉
+Sistema IoT ESP32 completo configurado y funcionando.
